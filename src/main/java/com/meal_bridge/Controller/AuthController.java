@@ -66,7 +66,7 @@ public class AuthController {
         }
     }
 
-    @PostMapping("/refresh")
+    @PostMapping("/token/refresh")
     public ResponseEntity<AuthResponse> refreshToken(@Valid @RequestBody RefreshTokenRequest request) {
         log.info("Token refresh attempt");
 
