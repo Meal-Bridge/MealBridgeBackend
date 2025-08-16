@@ -1,5 +1,6 @@
 package com.meal_bridge.Controller;
 
+import com.meal_bridge.constants.ControllerConstant;
 import com.meal_bridge.exception.ValidationFailException;
 import com.meal_bridge.model.dto.AuthRequest;
 import com.meal_bridge.model.dto.AuthResponse;
@@ -30,7 +31,7 @@ public class AuthController {
     private final JwtService jwtService;
     private final UserDetailsServiceImpl userDetailsService;
 
-    @PostMapping("/register")
+    @PostMapping(ControllerConstant.REGISTER)
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
         log.info("User registration attempt for email: {}", request.getEmail());
 
@@ -47,7 +48,7 @@ public class AuthController {
         }
     }
 
-    @PostMapping("/login")
+    @PostMapping(ControllerConstant.LOGIN)
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody AuthRequest request) {
         log.info("Login attempt for email: {}", request.getEmail());
 
@@ -65,7 +66,7 @@ public class AuthController {
         }
     }
 
-    @PostMapping("/refresh")
+    @PostMapping("/token/refresh")
     public ResponseEntity<AuthResponse> refreshToken(@Valid @RequestBody RefreshTokenRequest request) {
         log.info("Token refresh attempt");
 
